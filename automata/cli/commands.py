@@ -53,9 +53,10 @@ def configure(ctx, *args, **kwargs) -> None:
     logger.info("Configuring Automata:")
 
     reconfigure_logging(kwargs.get("log-level", "INFO"))
+    fpath = kwargs.get('project_root_fpath', None)
 
     DOTENV_PATH = ".env"
-    SCRIPTS_PATH = "scripts/"
+    SCRIPTS_PATH = f"{fpath}/scripts/" if fpath else "scripts/"
     DEFAULT_KEYS = {
         "GITHUB_API_KEY": "your_github_api_key",
         "OPENAI_API_KEY": "your_openai_api_key",
